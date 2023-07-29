@@ -16,4 +16,5 @@ public class ArrayGBArrayListTest {
         Assertions.assertNotEquals(2.2, doubleList.get(0));
 
     }
+    
 }

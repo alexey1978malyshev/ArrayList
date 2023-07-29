@@ -24,6 +24,11 @@ public class GBArrayList<T> implements IList {
         }
     }
 
+    @Override
+    public boolean add(int index, Object o) {
+        return false;
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public void remove(int index) {
@@ -51,6 +56,11 @@ public class GBArrayList<T> implements IList {
     @Override
     public void update(int index, Object t) {
         values[index] = (T) t;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
     }
 
     @Override

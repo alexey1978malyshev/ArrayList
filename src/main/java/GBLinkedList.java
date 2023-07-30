@@ -124,8 +124,8 @@ public class GBLinkedList<E> implements IList {
     public String toString() {
         return "GBLinkedList{" +
                 "size=" + size +
-                ", first=" + first +
-                ", last=" + last +
+                ", first=" + first.elem +
+                ", last=" + last.elem +
                 ", counter=" + counter +
                 '}';
     }

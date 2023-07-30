@@ -1,24 +1,21 @@
 import org.w3c.dom.Node;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-public class GBLinkedList <E> implements IList {
+public class GBLinkedList<E> implements IList {
     private int size = 0;
     private Node<E> first;
     private Node<E> last;
     private int counter = 0;
 
-    private static  class Node<E> {
-        E item;
-         private Node<E> next;
-        private Node <E> prev;
+    private static class Node<E> {
+        E elem;
+        private Node<E> next;
+        private Node<E> prev;
 
 
-        public Node( Node<E> prev,E item, Node<E> next) {
-            this.item = item;
+        public Node(Node<E> prev, E elem, Node<E> next) {
+            this.elem = elem;
             this.next = next;
             this.prev = prev;
         }
@@ -27,6 +24,7 @@ public class GBLinkedList <E> implements IList {
             return prev;
         }
     }
+
     Node<E> node(int index) {
         if (index < size) {
             Node<E> x = first;
@@ -47,7 +45,7 @@ public class GBLinkedList <E> implements IList {
     public boolean add(Object o) {
         try {
             Node<E> l = last;
-            Node<E> newNode = new Node<>(l, (E)o, null);
+            Node<E> newNode = new Node<>(l, (E) o, null);
             last = newNode;
             if (l == null)
                 first = newNode;
@@ -56,10 +54,28 @@ public class GBLinkedList <E> implements IList {
             size++;
             counter++;
             return true;
-        }catch (ClassCastException e) {
+        } catch (ClassCastException e) {
             return false;
         }
     }
+
+    public void addFirst(E e){
+        Node<E> f = first;
+        Node<E> newNode = new Node<>(null, e, f);
+        first = newNode;
+        if (f == null)
+            last = newNode;
+        else
+            f.prev = newNode;
+        size++;
+        counter++;
+    }
+    public void addLast(Object o) {
+        add(o);
+    }
+
+
+
 
     @Override
     public boolean add(int index, Object o) {
@@ -69,12 +85,19 @@ public class GBLinkedList <E> implements IList {
     @Override
     public void remove(int index) {
     }
+
     @Override
     public Object get(int index) {
         if (index < this.size) {
-            return node(index).item;
-        }
-        else return -1;
+            return node(index).elem;
+        } else return -1;
+    }
+
+    public E getLast() {
+        Node<E> l = last;
+        if (l == null)
+            throw new NoSuchElementException();
+        return l.elem;
     }
 
     @Override

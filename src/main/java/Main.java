@@ -26,12 +26,14 @@ public class Main {
         newList.add(55);
         newList.add(12);
         newList.add(4);
+        newList.add(88);
 
         System.out.println(newList.get(2));
         System.out.println(newList.size());
-
-
-
+        newList.addFirst(566);
+        System.out.println(newList.get(0));
+        System.out.println(newList.get(6));
+        System.out.println(newList.getLast());
 
     }
 }
